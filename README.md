@@ -1,18 +1,28 @@
 # Quarkus Movies
 
-#### List movies
+### List movies
+
 **GET**
 /movies
 
-#### Get movie by id
+----
+
+### Get movie by id
+
 **GET**
 /movies/{id}
 
-#### Get movie by title
+----
+
+### Get movie by title
+
 **GET**
 /movies/title/{title}
 
-#### Post movie
+----
+
+### Post movie
+
 **POST**
 /movies
 ```json
@@ -24,7 +34,10 @@
 }
 ```
 
-#### Delete movie
+----
+
+### Delete movie
+
 **DELETE**
 /movies/{id}
 
