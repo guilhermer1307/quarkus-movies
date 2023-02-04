@@ -49,7 +49,7 @@ public class MovieResource {
     @POST 
     @Transactional
     public Response create(Movie movie) {
-        
+
         try {
             movieRepository.persistAndFlush(movie);
         } catch (Exception e) {
@@ -60,6 +60,28 @@ public class MovieResource {
             return Response.created(URI.create("/movies/" + movie.getId())).build();
         }
         return Response.status(Status.BAD_REQUEST).build();
+    }
+
+    @PUT 
+    @Path("{id}") 
+    @Transactional
+    public Response update(@PathParam("id") Long id, Movie updatedMovie) {
+        Movie persistentMovie = movieRepository.findById(id);
+
+        if (persistentMovie == null) {
+            return Response.status(Status.NOT_FOUND).build();
+        } 
+        
+        if (updatedMovie == null) {
+            return Response.status(Status.BAD_REQUEST).build();
+        } 
+        
+        persistentMovie.setTitle(updatedMovie.getTitle());   
+        persistentMovie.setDescription(updatedMovie.getDescription());
+        persistentMovie.setDirector(updatedMovie.getDirector());
+        persistentMovie.setCountry(updatedMovie.getCountry());
+
+        return Response.ok(persistentMovie).build();
     }
 
     @DELETE 

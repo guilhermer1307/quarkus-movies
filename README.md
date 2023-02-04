@@ -36,6 +36,21 @@
 
 ----
 
+### Update movie
+
+**PUT**
+/movies/{id}
+```json
+{
+  "title": "Avatar",
+  "description": "On the lush alien world of Pandora live the Na'vi, beings who appear primitive but are highly evolved",
+  "director": "Peter Jackson",
+  "country": "USA"
+}
+```
+
+----
+
 ### Delete movie
 
 **DELETE**
